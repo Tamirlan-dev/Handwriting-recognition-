@@ -19,6 +19,7 @@ def read_this(image_file, gray_scale=False):
 def binarize_lib(image_file, thresh_val=128, with_plot=False, gray_scale=False):
     image_src = read_this(image_file, gray_scale=gray_scale)
     th, image_b = cv2.threshold(src=image_src, thresh=thresh_val, maxval=255, type=cv2.THRESH_BINARY) 
+    #cv2.imwrite(r'D:\researsh\test\binariza'+images,image_b)
     return image_b
 
 def remove_noise_and_smooth(img):
@@ -27,12 +28,13 @@ def remove_noise_and_smooth(img):
     opening = cv2.morphologyEx(filtered, cv2.MORPH_OPEN, kernel)
     closing = cv2.morphologyEx(opening, cv2.MORPH_CLOSE, kernel)
     removed_img = cv2.bitwise_or(img, closing)
-
+    #cv2.imwrite(r'D:\researsh\test\remove_noise.jpg'+images,removed_img)
     return removed_img
 
 def thinning_and_skeletonization(image):
     kernel = np.ones((5,5),np.uint8)
     skel = cv2.erode(image_noise,kernel,iterations = 1)
+    #cv2.imwrite(r'D:\researsh\test\thinning'+images,skel)
     return skel
 
 
@@ -48,8 +50,6 @@ for images in os.listdir(folder_dir):
         image_noise=remove_noise_and_smooth(image_bin)
         image_thin=thinning_and_skeletonization(image_noise)
         cv2.imwrite(savepath,image_thin)
-
-
 
 
 
