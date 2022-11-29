@@ -36,7 +36,7 @@ def thinning_and_skeletonization(image):
     return skel
 
 
-folder_dir = "D:/researsh"
+folder_dir = "D:/researsh/images"
 
 for images in os.listdir(folder_dir):
     if (images.endswith(".png") or images.endswith(".jpg")\
