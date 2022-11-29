@@ -5,8 +5,6 @@ from matplotlib import pyplot as plt
 import os
 from os import listdir
 
-
-
 def read_this(image_file, gray_scale=False):
     image_src = cv2.imread(image_file)
     if gray_scale:
@@ -14,7 +12,6 @@ def read_this(image_file, gray_scale=False):
     else:
         image_src = cv2.cvtColor(image_src, cv2.COLOR_BGR2RGB)
     return image_src
-
 
 def binarize_lib(image_file, thresh_val=128, with_plot=False, gray_scale=False):
     image_src = read_this(image_file, gray_scale=gray_scale)
@@ -36,7 +33,6 @@ def thinning_and_skeletonization(image):
     skel = cv2.erode(image_noise,kernel,iterations = 1)
     #cv2.imwrite(r'D:\researsh\test\thinning'+images,skel)
     return skel
-
 
 folder_dir = "D:/researsh/images"
 
